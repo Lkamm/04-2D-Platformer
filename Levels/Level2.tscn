@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/portal_start.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player_Container.gd" type="Script" id=2]
+[ext_resource path="res://Assets/portal_end.png" type="Texture" id=3]
+[ext_resource path="res://Levels/Exit.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Camera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Spawn.gd" type="Script" id=6]
+[ext_resource path="res://Levels/new_tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/Wasteland_Sky.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Wasteland_Mountains_2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Wasteland_Mountains_1.png" type="Texture" id=10]
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2036, 670 )
+scale = Vector2( 7.81836, 5.57031 )
+texture = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+texture = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Sprite"]
+texture = ExtResource( 9 )
+
+[node name="Spawn" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Spawn"]
+position = Vector2( 200.778, 201.832 )
+texture = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="Exit_to_3" type="Area2D" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Exit_to_3"]
+position = Vector2( 3643.56, 493.357 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Exit_to_3"]
+position = Vector2( 3643.56, 493.357 )
+polygon = PoolVector2Array( 12, -48.7, 23, -35.7, 23, -32.4, 25, -27.9, 25, 27.1, 22.6, 37, 21, 37, 11.5, 50, -11.6, 50, -23, 35.7, -23, 32.4, -25, 27.9, -25, -26.1, -19.4, -42, -17.8, -42, -10, -49.8, 12, -50 )
+
+[node name="Player_Container" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Backup_Camera" type="Camera2D" parent="Player_Container"]
+position = Vector2( 200, 200 )
+limit_left = 0
+limit_right = 3760
+limit_bottom = 600
+
+[node name="Enemy_Container" type="Node2D" parent="."]
+
+[node name="Platform" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+collision_friction = 0.0
+format = 1
+tile_data = PoolIntArray( 0, 5, 0, 62, 2, 0, 65536, 5, 0, 65598, 2, 0, 131072, 5, 0, 131086, 4, 0, 131087, 0, 0, 131089, 0, 0, 131091, 0, 0, 131093, 0, 0, 131095, 0, 0, 131097, 0, 0, 131099, 0, 0, 131101, 0, 0, 131103, 3, 0, 131134, 2, 0, 196608, 5, 0, 196621, 4, 0, 196670, 2, 0, 262144, 5, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262156, 4, 0, 262206, 2, 0, 327680, 5, 0, 327691, 4, 0, 327716, 0, 0, 327718, 0, 0, 327742, 2, 0, 393216, 5, 0, 393226, 4, 0, 393247, 1, 0, 393250, 3, 0, 393256, 0, 0, 393278, 2, 0, 458752, 5, 0, 458761, 4, 0, 458796, 4, 0, 458797, 3, 0, 458814, 2, 0, 524288, 5, 0, 524331, 4, 0, 524332, 0, 0, 524334, 3, 0, 524350, 2, 0, 589824, 5, 0, 589865, 0, 0, 589868, 0, 0, 589871, 3, 0, 589878, 4, 0, 589879, 1, 0, 589886, 2, 0, 655360, 5, 0, 655361, 1, 0, 655364, 1, 0, 655413, 4, 0, 655422, 2, 0, 720896, 5, 0, 720930, 4, 0, 720958, 2, 0, 786432, 5, 0, 786465, 4, 0, 786483, 1, 0, 786494, 2, 0, 851968, 5, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851979, 3, 0, 851999, 0, 0, 852030, 2, 0, 917504, 5, 0, 917516, 3, 0, 917526, 0, 0, 917545, 0, 0, 917547, 3, 0, 917552, 1, 0, 917566, 2, 0, 983040, 5, 0, 983053, 3, 0, 983061, 0, 0, 983064, 0, 0, 983079, 0, 0, 983084, 3, 0, 983102, 2, 0, 1048576, 5, 0, 1048590, 3, 0, 1048595, 0, 0, 1048601, 4, 0, 1048602, 3, 0, 1048609, 0, 0, 1048621, 3, 0, 1048623, 0, 0, 1048638, 2, 0, 1114112, 5, 0, 1114127, 3, 0, 1114129, 0, 0, 1114139, 0, 0, 1114144, 0, 0, 1114147, 0, 0, 1114149, 0, 0, 1114174, 2, 0, 1179648, 5, 0, 1179664, 3, 0, 1179675, 0, 0, 1179677, 0, 0, 1179710, 2, 0, 1245184, 5, 0, 1245214, 0, 0, 1245246, 2, 0, 1310720, 5, 0, 1310782, 2, 0, 1376256, 1, 0, 1376257, 1, 0, 1376260, 1, 0, 1376261, 1, 0, 1376262, 1, 0, 1376263, 1, 0, 1376264, 1, 0, 1376265, 1, 0, 1376266, 1, 0, 1376267, 1, 0, 1376270, 1, 0, 1376272, 1, 0, 1376273, 1, 0, 1376274, 1, 0, 1376275, 1, 0, 1376276, 1, 0, 1376277, 1, 0, 1376278, 1, 0, 1376279, 1, 0, 1376280, 1, 0, 1376281, 1, 0, 1376282, 1, 0, 1376283, 1, 0, 1376284, 1, 0, 1376285, 1, 0, 1376286, 1, 0, 1376287, 1, 0, 1376288, 1, 0, 1376289, 1, 0, 1376290, 1, 0, 1376291, 1, 0, 1376292, 1, 0, 1376293, 1, 0, 1376294, 1, 0, 1376295, 1, 0, 1376296, 1, 0, 1376297, 1, 0, 1376298, 1, 0, 1376299, 1, 0, 1376300, 1, 0, 1376301, 1, 0, 1376302, 1, 0, 1376303, 1, 0, 1376304, 1, 0, 1376305, 1, 0, 1376306, 1, 0, 1376307, 1, 0, 1376308, 1, 0, 1376309, 1, 0, 1376310, 1, 0, 1376311, 1, 0, 1376312, 1, 0, 1376313, 1, 0, 1376316, 1, 0 )
+
+[node name="Foreground" type="TileMap" parent="."]
+collision_friction = 0.0
+collision_layer = 0
+collision_mask = 2147483648
+format = 1
+
+[node name="Camera" parent="." instance=ExtResource( 5 )]
+process_mode = 0
+
+[connection signal="body_entered" from="Exit_to_3" to="Exit_to_3" method="_on_Exit_body_entered"]

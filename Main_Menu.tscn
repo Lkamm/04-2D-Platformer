@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main_Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Wasteland_Sky.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Wasteland_Mountains_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Wasteland_Mountains_1.png" type="Texture" id=4]
+
+[node name="Main_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = 5.0
+margin_bottom = 2.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 499, 295 )
+scale = Vector2( 1.9668, 2.30078 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 503, 308 )
+scale = Vector2( 1.97266, 2.32031 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 507, 314 )
+scale = Vector2( 1.9707, 2.26563 )
+texture = ExtResource( 3 )
+
+[node name="Welcome to the Wild West" type="Label" parent="."]
+margin_left = -3.0
+margin_top = 45.0
+margin_right = 593.0
+margin_bottom = 230.0
+text = "Welcome to the Wild West!"
+
+[node name="Play" type="Button" parent="."]
+margin_left = 668.0
+margin_top = 165.0
+margin_right = 815.0
+margin_bottom = 206.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 663.0
+margin_top = 244.0
+margin_right = 827.0
+margin_bottom = 290.0
+text = "Quit"
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
