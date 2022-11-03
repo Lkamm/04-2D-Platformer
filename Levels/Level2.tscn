@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/portal_start.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player_Container.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Wasteland_Sky.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Wasteland_Mountains_2.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Wasteland_Mountains_1.png" type="Texture" id=10]
+[ext_resource path="res://Levels/Enemy_Container.gd" type="Script" id=11]
 
 [node name="Game" type="Node2D"]
 
@@ -55,6 +56,9 @@ limit_right = 3760
 limit_bottom = 600
 
 [node name="Enemy_Container" type="Node2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="Timer" type="Timer" parent="Enemy_Container"]
 
 [node name="Platform" type="TileMap" parent="."]
 tile_set = ExtResource( 7 )
@@ -72,3 +76,4 @@ format = 1
 process_mode = 0
 
 [connection signal="body_entered" from="Exit_to_3" to="Exit_to_3" method="_on_Exit_body_entered"]
+[connection signal="timeout" from="Enemy_Container/Timer" to="Enemy_Container" method="_on_Timer_timeout"]
