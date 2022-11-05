@@ -15,7 +15,7 @@ func _physics_process(_delta):
 		execute_fade_out(fade_out)
 	if fade_in:
 		execute_fade_in()
-		
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func start_fade_in():
 	if fade != null:
@@ -51,4 +51,4 @@ func update_score(s):
 	score += s
 	var score = get_node_or_null("/root/Game/UI")
 	if score != null:
-		UI.update_score()
+		score.update_score()

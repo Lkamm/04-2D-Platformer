@@ -14,12 +14,14 @@ export var max_move = 300
 
 export var jump_speed = 100
 export var max_jump = 1000
-
 export var leap_speed = 100
 export var max_leap = 1000
-
 var moving = false
 var is_jumping = false
+var ammo = 6
+onready var Bullet = load("res://Bullet.tscn")
+onready var mousePos = get_viewport().get_mouse_position()
+onready var ray = $RayCast2D
 
 
 func _ready():
@@ -54,6 +56,17 @@ func set_animation(anim):
 	if $AnimatedSprite.animation == anim: return
 	if $AnimatedSprite.frames.has_animation(anim): $AnimatedSprite.play(anim)
 	else: $AnimatedSprite.play()
+func shoot():
+	if Input.is_action_pressed("shoot"):
+		SM.set_state("Shooting")
+		var bullet = Bullet.instance()
+		var d = global_position.angle_to_point(mousePos) - PI/2
+		bullet.rotation = d
+		ray.cast_to = mousePos
+		bullet.global_position = global_position + mousePos.rotated(d)
+		add_child(Bullet)
+		ammo = ammo - 1
+	
 
 func die():
 	queue_free()
