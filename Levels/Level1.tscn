@@ -95,12 +95,16 @@ margin_bottom = 40.0
 script = ExtResource( 12 )
 
 [node name="Score" type="Label" parent="UI"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 360.0
+margin_top = -677.0
+margin_right = 463.0
+margin_bottom = -644.0
 
 [node name="Lives" type="Label" parent="UI"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 19.0
+margin_top = -625.0
+margin_right = 168.0
+margin_bottom = -575.0
 
 [node name="Sprite" type="Sprite" parent="UI"]
 

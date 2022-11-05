@@ -22,7 +22,7 @@ onready var ray = $RayCast2D
 		#var bullet = Bullet.instance()
 		#var d = global_position.angle_to_point(mousePos) - PI/2
 		#bullet.rotation = d
-		#bullet.global_position = global_position + mousePos.rotated(rotation)
+		#bullet.global_position = global_position + mousePos.rotated(d)
 		#ray.cast_to = ray_to_local(mousePos)
 		#add_child(Bullet)
 		#mmo = ammo - 1
